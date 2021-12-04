@@ -35,6 +35,8 @@
             this.rgb_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.rgbLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.PreviousColorBtn = new System.Windows.Forms.Button();
+            this.NextColorBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // GenerateRandColorBtn
@@ -63,7 +65,7 @@
             this.StopBtn.Name = "StopBtn";
             this.StopBtn.Size = new System.Drawing.Size(223, 55);
             this.StopBtn.TabIndex = 2;
-            this.StopBtn.Text = "StopBtn";
+            this.StopBtn.Text = "Stop Generator";
             this.StopBtn.UseVisualStyleBackColor = true;
             this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
@@ -91,17 +93,39 @@
             this.rgbLabelToolTip.InitialDelay = 350;
             this.rgbLabelToolTip.ReshowDelay = 100;
             // 
+            // PreviousColorBtn
+            // 
+            this.PreviousColorBtn.Location = new System.Drawing.Point(1013, 12);
+            this.PreviousColorBtn.Name = "PreviousColorBtn";
+            this.PreviousColorBtn.Size = new System.Drawing.Size(99, 23);
+            this.PreviousColorBtn.TabIndex = 4;
+            this.PreviousColorBtn.Text = "Previous Color";
+            this.PreviousColorBtn.UseVisualStyleBackColor = true;
+            this.PreviousColorBtn.Click += new System.EventHandler(this.PreviousColorBtn_Click);
+            // 
+            // NextColorBtn
+            // 
+            this.NextColorBtn.Location = new System.Drawing.Point(1117, 12);
+            this.NextColorBtn.Name = "NextColorBtn";
+            this.NextColorBtn.Size = new System.Drawing.Size(75, 23);
+            this.NextColorBtn.TabIndex = 5;
+            this.NextColorBtn.Text = "Next Color";
+            this.NextColorBtn.UseVisualStyleBackColor = true;
+            this.NextColorBtn.Click += new System.EventHandler(this.NextColorBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 624);
+            this.Controls.Add(this.NextColorBtn);
+            this.Controls.Add(this.PreviousColorBtn);
             this.Controls.Add(this.rgb_label);
             this.Controls.Add(this.StopBtn);
             this.Controls.Add(this.KeepGeneratingRandColorBtn);
             this.Controls.Add(this.GenerateRandColorBtn);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "RGB Color Generator";
             this.ResumeLayout(false);
 
         }
@@ -114,5 +138,7 @@
         private Label rgb_label;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private ToolTip rgbLabelToolTip;
+        private Button PreviousColorBtn;
+        private Button NextColorBtn;
     }
 }

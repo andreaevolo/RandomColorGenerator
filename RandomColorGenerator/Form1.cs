@@ -27,7 +27,17 @@ namespace RandomColorGenerator
             return splitInts;
         }
 
-        private void GenerateColor()
+        private Color CreateColor(string rgb)
+        {
+            if(rgb != null)
+            {
+                int[] rgb_argb = calcArgb(rgb);
+                return Color.FromArgb(rgb_argb[0], rgb_argb[1], rgb_argb[2]);
+            }
+            return Color.Empty;
+        }
+
+        private void GeneratorColors()
         {
             _generator.generateColor();
             string color_str = _generator.Color();
@@ -37,11 +47,11 @@ namespace RandomColorGenerator
                 rgb_label.Text = color_str;
                 rgb_label.ForeColor = LabelTextColor(rgb);
             });
-            this.BackColor = Color.FromArgb(rgb[0], rgb[1], rgb[2]);
+            this.BackColor = CreateColor(color_str);
         }
         private void GenerateRandColorBtn_Click(object sender, EventArgs e)
         {
-            GenerateColor();
+            GeneratorColors();
         }
 
         private void KeepGeneratingRandColorBtn_Click(object sender, EventArgs e)
@@ -68,7 +78,7 @@ namespace RandomColorGenerator
             _keep_generating = true;
             while (_keep_generating)
             {
-                GenerateColor();
+                GeneratorColors();
                 Thread.Sleep(2000);
             }
         }
@@ -76,6 +86,25 @@ namespace RandomColorGenerator
         private void copyRGB_DoubleClick(object sender, EventArgs e)
         {
             
+        }
+
+        private void PreviousColorBtn_Click(object sender, EventArgs e)
+        {
+            string rgb_str = _generator.goBack();
+            if(rgb_str != null)
+            {
+                int[] rgb = calcArgb(rgb_str);
+                this.BackColor = CreateColor(rgb_str);
+            }
+        }
+
+        private void NextColorBtn_Click(object sender, EventArgs e)
+        {
+            string rgb_str = _generator.goForward();
+            if (rgb_str != null)
+            {
+                this.BackColor = CreateColor(rgb_str);
+            }
         }
     }
 }

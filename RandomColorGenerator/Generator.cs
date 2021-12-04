@@ -33,7 +33,13 @@ namespace RandomColorGenerator
 
         public void generateColor()
         {
+            if(_colors_list.Count > 100)
+            {
+                _colors_list.RemoveRange(0, 100);
+                _current_index -= 100;
+            }
             _colors_list.Add(new RandomColor());
+            _current_index++;
         }
 
         public string Color()
@@ -53,7 +59,7 @@ namespace RandomColorGenerator
 
         public string goForward()
         {
-            if (_current_index < _colors_list.Count)
+            if (_current_index < _colors_list.Count-1)
             {
                 _current_index++;
                 return _colors_list[_current_index].Value;
