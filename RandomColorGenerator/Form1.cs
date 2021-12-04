@@ -79,6 +79,7 @@ namespace RandomColorGenerator
             while (_keep_generating)
             {
                 GeneratorColors();
+                // color generation interval. Change it to speed up or slown down the generation process.
                 Thread.Sleep(2000);
             }
         }
